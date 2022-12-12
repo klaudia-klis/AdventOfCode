@@ -53,7 +53,18 @@ function syncReadFile(filename) {
     return pairs.length;
   }
   
-  console.log(findPairs(arr));
+  function findOverlap(arr) {
+    var byTwo = sort(arr)
+    var overlaps = [];
+    for (let i = 0; i < byTwo.length; i++) {
+      if ( (object[byTwo[i][0][0]] < object[byTwo[i][1][0]] && object[byTwo[i][0][1]] < object[byTwo[i][1][0]] ) || (object[byTwo[i][1][0]] < object[byTwo[i][0][0]] && object[byTwo[i][1][1]] < object[byTwo[i][0][0]]) ) {
+        overlaps.push(byTwo[i]);
+      }
+    }
+    return (byTwo.length - overlaps.length);
+  }
+  
+  console.log(findOverlap(arr));
 }  
 
 syncReadFile('/Users/klaudiaklis/Sites/AdventOfCode/Day4/day4data.txt');
